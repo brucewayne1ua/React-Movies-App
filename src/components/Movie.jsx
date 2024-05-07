@@ -8,7 +8,7 @@ function Movie(props) {
             </div>
             <div className="card-content">
                 <span className="card-title activator grey-text text-darken-4">{Title}</span>
-                <p>{Year}<span> {Type}</span> <span> {}</span></p>
+                <p>{Year}<span> {Type}</span></p>
             </div>
         </div>
     );
