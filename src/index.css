@@ -23,4 +23,6 @@ nav{
   gap: 1rem;
 }
 
-
+.label:not(:last-child){
+  margin-right: 1 rem;
+}
