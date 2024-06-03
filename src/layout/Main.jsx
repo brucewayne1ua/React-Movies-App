@@ -6,6 +6,7 @@ import { Search } from '../components/Search';
 class Main extends React.Component {
   state = {
     movies: [],
+    loading: true,
   };
 
   componentDidMount() {
@@ -13,6 +14,7 @@ class Main extends React.Component {
   }
 
   searchMovies = (str, type = 'all') => {
+    this.setState({ loading: true });
     fetch(
       `http://www.omdbapi.com/?apikey=676efa28&s=${str}${
         type !== 'all' ? `&type=${type}` : ''
@@ -21,7 +23,7 @@ class Main extends React.Component {
       .then((response) => response.json())
       .then((data) => {
         if (data.Response === 'True') {
-          this.setState({ movies: data.Search });
+          this.setState({ movies: data.Search, loading: false });
         } else {
           this.setState({ movies: [] });
         }
@@ -30,7 +32,7 @@ class Main extends React.Component {
   };
 
   render() {
-    const { movies } = this.state;
+    const { movies, loading } = this.state;
 
     return (
       <main className='container content'>
